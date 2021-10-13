@@ -40,6 +40,7 @@
 	<button onclick="makeNewDiv()">Push value</button>
 	<button onclick="popItem()">Pop</button>
 	<button onclick="zap()">Zap values</button>
+	<button onclick="unique()">Unique</button>
 </body>
 <script>
 	function makeNewDiv() {
@@ -50,25 +51,37 @@
 		document.getElementById('target').appendChild(element)
 	}
 	function popItem() {
-		var StackItems = document.getElementsByClassName("stack")
-		var StackLength = StackItems.length
-		if (StackLength > 0)
-			StackItems[StackLength - 1].remove()
+		var items = document.getElementsByClassName("stack")
+		var length = items.length
+		if (length > 0)
+			items[length - 1].remove()
 	}
 	function zap() {
-		var StackItems = document.getElementsByClassName("stack")
+		var items = document.getElementsByClassName("stack")
 		let input = document.getElementById("inputElement").value
-		if (StackItems != undefined && StackItems.length > 0) {
-			for (let i = 0; i < StackItems.length; i++) {
-				if (StackItems[i].innerHTML == input) {
-					var itemToBeRemoved = StackItems[i].innerHTML
-					StackItems[i].remove()
+		if (items != undefined && items.length > 0) {
+			for (let i = 0; i < items.length; i++) {
+				if (items[i].innerHTML == input) {
+					var itemToBeRemoved = items[i].innerHTML
+					items[i].remove()
 					console.log(itemToBeRemoved)
 					i--
 				}
 			}
 		}
 	}
+
+	function unique(){
+        var items = document.getElementsByClassName("stack")
+		for(var i=0; i<items.length; i++){
+			for(var j=i+1; j<items.length; j++){
+                if(items[i].innerHTML == items[j].innerHTML){
+                    items[i].remove()
+                    j--;i--
+                }
+            }
+		}
+    }
 </script>
 
 </html>

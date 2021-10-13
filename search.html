@@ -23,6 +23,8 @@
   <p id="distance" align="left">Distance is unknown.</p>
 
   <br>
+  <button onclick="newGame()">Reset</button>
+  <br>
   <div class="container">
     <div class="row">
       <div class="col-sm-2"><img class="rounded img-fluid" src="plant.jpg" width=300 hight=300 id="image1"
@@ -148,10 +150,20 @@
 
     }
 
+    function newGame() {
+      triesCount = 0
+      animalLocation = Math.floor(Math.random() * 23 + 0)
+      document.getElementById("tries").innerHTML = "Number of tries is 0."
+      for (var i = 0; i < 24; i++) {
+        if (ids[i] == ids[animalLocation])
+          document.getElementById(ids[i]).src = "animal.jpg"
+
+      }
+    }
+
 
   </script>
 
 </body>
 
 </html>
-  
